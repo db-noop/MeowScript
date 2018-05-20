@@ -41,5 +41,5 @@ print v|greeting
 Pipe Operators are operators used to do special stuff. Their purpose is to never be mistaken as parameters or instructions.  
 The Pipe Operators are:  
 v|*variable name* - references a variable  
-u|*4 hexadecimal digits* - gets a unicode character
+u|*4 hexadecimal digits* - gets a unicode character  
 c|*comment* - comment
