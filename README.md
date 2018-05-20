@@ -45,6 +45,7 @@ print v|greeting
 Pipe Operators are operators used to do special stuff. Their purpose is to never be mistaken as parameters or instructions.  
 The Pipe Operators are:  
 v|*variable name* - references a variable  
+l|*variable name* - references a locally stored variable
 u|*4 hexadecimal digits* - gets a unicode character  
 c|*comment* - comment  
 q|*__double__ or __single__* - creates literal single or double quotes, since MeowScript ignores quotes.
