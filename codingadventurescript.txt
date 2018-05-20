@@ -1,3 +1,6 @@
-|Coding Adventure^^^\
-|Loading ROM...)
-Welcome to Coding Adventure.
+print Coding Adventure
+wait 3000
+print Loading ROM...
+wait 500
+clear
+print Welcome to Coding Adventure.
