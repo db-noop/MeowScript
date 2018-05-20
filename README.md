@@ -2,7 +2,7 @@
   
 ## How to write a MeowScript program
 ### Style
-Double quotes (**"**) and single quotes (**'**) are ignored. If they are needed in text, use the q|single or q|double pipe operator to generate respectively, single and double quotes.
+Double quotes (**"**) and single quotes (**'**) are ignored. If they are needed in text, use the q|single or q|double pipe operators to generate respectively, single and double quotes.
 
 ### Comments
 Comments in MeowScript are defined with the c| Pipe Operator (see Pipe Operators below)
