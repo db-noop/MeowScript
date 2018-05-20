@@ -7,12 +7,13 @@ Comments in MeowScript are defined with the c| Pipe Operator (see Pipe Operators
 ## Instructions
 The primary MeowScript instructions are:
 ### 'clear':
-Clears the game console. This instruction takes no parameters.
+Clears the console. This instruction takes no parameters.
 
 ### 'input':
-Renders buttons in the game console represented in this format:
+Renders buttons in a popup box represented in this format:
 *message*,*id*;
-This instruction will wait for the user's response, and run the next instruction with a parameter of the ID of the button clicked.
+This instruction will wait for the user's response, and run the next instruction with a parameter of the ID of the button clicked.  
+If the distribution of MeowScript does not support GUI, a simple enter character to select method may be used.
 
 ### 'print'
 Prints *parameter* in the game console.
