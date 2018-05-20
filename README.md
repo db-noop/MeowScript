@@ -1,6 +1,9 @@
-The Definitive MeowScript reference
+`The Definitive MeowScript reference`
   
 # How to write a MeowScript program
+## Style
+Double quotes (*"*) and single quotes (*'*) are ignored. If they are needed in text, use the q|single or q|double pipe operator to generate respectively, single and double quotes.
+
 ## Comments
 Comments in MeowScript are defined with the c| Pipe Operator (see Pipe Operators below)
 
@@ -11,7 +14,7 @@ Clears the console. This instruction takes no parameters.
 
 ### 'input':
 Renders buttons in a popup box represented in this format:
-*message*,*id*;
+*message*,*id* with semicolons separating buttons.
 This instruction will wait for the user's response, and run the next instruction with a parameter of the ID of the button clicked.  
 If the distribution of MeowScript does not support GUI, a simple enter character to select method may be used.
 
@@ -34,7 +37,7 @@ Variables are referenced with the v| pipe operator (see Pipe Operators below)
 example program:
 ```
 var greeting
-assign greeting Hellos|World
+assign greeting Hello World
 print v|greeting
 ```
 
@@ -43,4 +46,5 @@ Pipe Operators are operators used to do special stuff. Their purpose is to never
 The Pipe Operators are:  
 v|*variable name* - references a variable  
 u|*4 hexadecimal digits* - gets a unicode character  
-c|*comment* - comment
+c|*comment* - comment  
+q|*__double__ or __single__* - creates literal single or double quotes, since MeowScript ignores quotes.
