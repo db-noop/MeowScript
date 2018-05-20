@@ -1,38 +1,38 @@
-`The Definitive MeowScript reference`
+# The Definitive MeowScript reference
   
-# How to write a MeowScript program
-## Style
+## How to write a MeowScript program
+### Style
 Double quotes (*"*) and single quotes (*'*) are ignored. If they are needed in text, use the q|single or q|double pipe operator to generate respectively, single and double quotes.
 
-## Comments
+### Comments
 Comments in MeowScript are defined with the c| Pipe Operator (see Pipe Operators below)
 
-## Instructions
+### Instructions
 The primary MeowScript instructions are:
-### 'clear':
+#### 'clear':
 Clears the console. This instruction takes no parameters.
 
-### 'input':
+#### 'input':
 Renders buttons in a popup box represented in this format:
 *message*,*id* with semicolons separating buttons.
 This instruction will wait for the user's response, and run the next instruction with a parameter of the ID of the button clicked.  
 If the distribution of MeowScript does not support GUI, a simple enter character to select method may be used.
 
-### 'print'
+#### 'print'
 Prints *parameter* in the game console.
 
-### 'wait'
+#### 'wait'
 Waits *parameter* milliseconds
 
-## Variables
-### 'var' instruction
+### Variables
+#### 'var' instruction
 Variables are declared with the var instruction. It takes the name as a parameter.
 
-### 'assign' instruction
+#### 'assign' instruction
 Variables are assigned the empty string by default. 'assign' takes the variable name and the new value as a parameter in the format  
 *variable name* *new value*
 
-### Referencing variables
+#### Referencing variables
 Variables are referenced with the v| pipe operator (see Pipe Operators below)  
 example program:
 ```
@@ -41,7 +41,7 @@ assign greeting Hello World
 print v|greeting
 ```
 
-## Pipe Operators
+### Pipe Operators
 Pipe Operators are operators used to do special stuff. Their purpose is to never be mistaken as parameters or instructions.  
 The Pipe Operators are:  
 v|*variable name* - references a variable  
