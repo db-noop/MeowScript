@@ -21,6 +21,13 @@ If the distribution of MeowScript does not support GUI, a simple enter character
 #### 'print'
 Prints *parameter* in the game console.
 
+#### 'playsound'
+Plays the sound with the url passed as a parameter.
+Example:
+```
+playsound https://cdn.glitch.com/5d835f0c-bdd2-4167-a8bd-204ad79f7029%2FCrowdSound.wav?1517106848763
+```
+
 #### 'wait'
 Waits *parameter* milliseconds
 
