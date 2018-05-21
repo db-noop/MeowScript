@@ -95,7 +95,7 @@ class ScriptInstruction {
   }
 }
 
-MeowScript.ParseScript(script) {
+MeowScript.ParseScript = function(script) {
   
 }
 
