@@ -41,6 +41,8 @@ assign greeting Hello World
 print v|greeting
 ```
 
+#### Local Variable Storage
+
 ### Pipe Operators
 Pipe Operators are operators used to do special stuff. Their purpose is to never be mistaken as parameters or instructions.  
 The Pipe Operators are:  
