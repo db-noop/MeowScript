@@ -103,9 +103,9 @@ MeowScript.__millis = function() {
   return new Date().getTime() - __start;
 }
 
-MeowScript.__flash() {
+MeowScript.__flash = function() {
   CaretVisible = !CaretVisible;
   document.getElementById("caret").style.display = CaretVisible ? (document.hasFocus() ? "inline" : "none") : "none";
 }
 
-setInterval(flash, 500);
+setInterval(MeowScript.__flash, 500);
