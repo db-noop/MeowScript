@@ -1,17 +1,63 @@
-var start = new Date().getTime();
-var waitStart = new Date().getTime();
-var caretVisible = true;
-var scriptarray = [];
-var waitMillis = 0;
-var inputWait = false;
+window.MeowScript = {};
 
-function GetWaitMillis() {
-  return new Date().getTime() - waitStart;
+MeowScript.__start = new Date().getTime();
+MeowScript.__waitStart = new Date().getTime();
+MeowScript.CaretVisible = true;
+MeowScript.__scriptarray = [];
+MeowScript.__waitMillis = 0;
+MeowScript.__inputWait = false;
+MeowScript.__inputParameter = "";
+
+MeowScript.__getWaitMillis = function() {
+  return new Date().getTime() - __waitStart;
 }
 
-function createButton(text) {
+// Function from https://stackoverflow.com/questions/10149963/adding-event-listener-cross-browser
+// add event cross browser
+window.MeowScript.__addEvent = function(elem, event, fn) {
+    // avoid memory overhead of new anonymous functions for every event handler that's installed
+    // by using local functions
+    function listenHandler(e) {
+        var ret = fn.apply(this, arguments);
+        if (ret === false) {
+            e.stopPropagation();
+            e.preventDefault();
+        }
+        return(ret);
+    }
+
+    function attachHandler() {
+        // set the this pointer same as addEventListener when fn is called
+        // and make sure the event is passed to the fn also so that works the same too
+        var ret = fn.call(elem, window.event);   
+        if (ret === false) {
+            window.event.returnValue = false;
+            window.event.cancelBubble = true;
+        }
+        return(ret);
+    }
+
+    if (elem.addEventListener) {
+        elem.addEventListener(event, listenHandler, false);
+        return {elem: elem, handler: listenHandler, event: event};
+    } else {
+        elem.attachEvent("on" + event, attachHandler);
+        return {elem: elem, handler: attachHandler, event: event};
+    }
+}
+
+function removeEvent(token) {
+    if (token.elem.removeEventListener) {
+        token.elem.removeEventListener(token.event, token.handler);
+    } else {
+        token.elem.detachEvent("on" + token.event, token.handler);
+    }
+}
+
+MeowScript.__createButton = function(text, id) {
   var button = document.createElement("a");
-  button.appendChild(document.createTextNode(text))
+  button.appendChild(document.createTextNode(text));
+  MeowScript.__addEvent(button, "click", function() { MeowScript.__inputParameter = id; MeowScript.__inputWait = false; });
 }
 
 class ScriptInstruction {
@@ -21,7 +67,7 @@ class ScriptInstruction {
   }
   
   execute() {
-    if (waitMillis > 0 && (GetWaitMillis() < waitMillis)) {
+    if (MeowScript.__waitMillis > 0 && (MeowScript.__getWaitMillis() < MeowScript.__waitMillis)) {
       return;
     }
     
@@ -31,8 +77,8 @@ class ScriptInstruction {
         break;
       
       case 'wait':
-        waitStart = new Date().getTime();
-        waitMillis = parseInt(this.parameter)
+        MeowScript.__waitStart = new Date().getTime();
+        MeowScript.__waitMillis = parseInt(this.parameter)
         break;
       
       case 'clear':
@@ -40,26 +86,26 @@ class ScriptInstruction {
         break;
         
       case 'input':
-        inputWait = true;
+        MeowScript.__inputWait = true;
         var buttons = this.parameter.split(",");
         for (var i = 0; i < buttons.length; i++) {
-          
+          MeowScript
         }
     }
   }
 }
 
-function parsescript(script) {
+MeowScript.ParseScript(script) {
   
 }
 
-function millis() {
-  return new Date().getTime() - start;
+MeowScript.__millis = function() {
+  return new Date().getTime() - __start;
 }
 
-function flash() {
-  caretVisible = !caretVisible;
-  document.getElementById("caret").style.display = caretVisible ? (document.hasFocus() ? "inline" : "none") : "none";
+MeowScript.__flash() {
+  CaretVisible = !CaretVisible;
+  document.getElementById("caret").style.display = CaretVisible ? (document.hasFocus() ? "inline" : "none") : "none";
 }
 
 setInterval(flash, 500);
