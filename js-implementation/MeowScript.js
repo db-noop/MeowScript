@@ -3,6 +3,7 @@ window.MeowScript = {};
 MeowScript.__start = new Date().getTime();
 MeowScript.__waitStart = new Date().getTime();
 MeowScript.CaretVisible = true;
+MeowScript.__caretDisplayed = true;
 MeowScript.__scriptarray = [];
 MeowScript.__waitMillis = 0;
 MeowScript.__inputWait = false;
@@ -104,8 +105,8 @@ MeowScript.__millis = function() {
 }
 
 MeowScript.__flash = function() {
-  CaretVisible = !CaretVisible;
-  document.getElementById("caret").style.display = CaretVisible ? (document.hasFocus() ? "inline" : "none") : "none";
+  MeowScript.__caretDisplayed = !MeowScript.__caretDisplayed;
+  document.getElementById("caret").style.display = MeowScript.__caretDisplayed ? (MeowScript.CaretVisible ? (document.hasFocus() ? "inline" : "none") : "none") : "none";
 }
 
 setInterval(MeowScript.__flash, 500);
