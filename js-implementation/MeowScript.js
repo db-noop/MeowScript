@@ -8,6 +8,7 @@ MeowScript.__scriptarray = [];
 MeowScript.__waitMillis = 0;
 MeowScript.__inputWait = false;
 MeowScript.__inputParameter = "";
+MeowScript.__inputParameter = "";
 
 MeowScript.__getWaitMillis = function() {
   return new Date().getTime() - __waitStart;
@@ -58,16 +59,22 @@ function removeEvent(token) {
 MeowScript.__createButton = function(text, id) {
   var button = document.createElement("a");
   button.appendChild(document.createTextNode(text));
-  MeowScript.__addEvent(button, "click", function() { MeowScript.__inputParameter = id; MeowScript.__inputWait = false; });
+  MeowScript.__addEvent(button, "click", function() { MeowScript.__inputParameter = id; MeowScript.__inputWait = false; document.querySelectorAll("button").forEach(function(i, item) {item.parentNode.removeChild(item);}); });
 }
 
 class ScriptInstruction {
   constructor(instruction, parameter="") {
     this.instruction = instruction;
     this.parameter = parameter;
+    this.executed = false;
   }
   
   execute() {
+    if (MeowScript.__inputParameter != "") {
+      this.parameter += MeowScript.__inputParameter;
+      MeowScript.__inputParameter = "";
+    }
+    
     if (MeowScript.__waitMillis > 0 && (MeowScript.__getWaitMillis() < MeowScript.__waitMillis)) {
       return;
     }
@@ -79,7 +86,7 @@ class ScriptInstruction {
       
       case 'wait':
         MeowScript.__waitStart = new Date().getTime();
-        MeowScript.__waitMillis = parseInt(this.parameter)
+        MeowScript.__waitMillis = parseInt(this.parameter);
         break;
       
       case 'clear':
@@ -90,9 +97,11 @@ class ScriptInstruction {
         MeowScript.__inputWait = true;
         var buttons = this.parameter.split(",");
         for (var i = 0; i < buttons.length; i++) {
-          MeowScript
+          MeowScript.__createButton();
         }
     }
+    
+    this.executed = true;
   }
 }
 
