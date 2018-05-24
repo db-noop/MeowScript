@@ -4,7 +4,7 @@ MeowScript.__start = new Date().getTime();
 MeowScript.__waitStart = new Date().getTime();
 MeowScript.CaretVisible = true;
 MeowScript.__caretDisplayed = true;
-MeowScript.__scriptarray = [];
+MeowScript.__scriptArray = [];
 MeowScript.__waitMillis = 0;
 MeowScript.__inputWait = false;
 MeowScript.__inputParameter = "";
@@ -106,7 +106,15 @@ class ScriptInstruction {
 }
 
 MeowScript.ParseScript = function(script) {
+  var scriptparse = script.split("\n");
   
+  for (var i = 0; i < scriptparse.length; i++)
+  {
+    var item = scriptparse[i];
+    var instruction = item.split(" ")[0];
+    var parameter = item.split(" ").slice(1).join(" ");
+    MeowScript.__scriptarray.push(new ScriptInstruction())
+  }
 }
 
 MeowScript.__millis = function() {
