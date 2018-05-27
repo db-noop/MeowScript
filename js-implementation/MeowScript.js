@@ -105,6 +105,9 @@ class ScriptInstruction {
   }
 }
 
+class PipeOperator {
+}
+
 MeowScript.ParseScript = function(script) {
   var scriptparse = script.split("\n");
   
